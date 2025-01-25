@@ -214,7 +214,7 @@ function toggleCategory(){
 function category_init(){
     let categoryList = document.querySelector('.category-list')
     categories.map((category,index)=>{
-        categoryList.innerHTML += `<li id="cat_${index}" class="hide-category" onclick="load_category(${index})">${category}</li>`
+        categoryList.innerHTML += `<li id="cat_${index}" class="hide-category" onclick="load_category(${index})">${category.name}</li>`
     })
 }
 
@@ -222,7 +222,7 @@ async function load_category(id){
     window.scrollTo(0,0)
     let endpoint = ""
     if(id != -1){
-        endpoint = categories[id]
+        endpoint = categories[id].slug
     }
     try{
         prodData = await getData(`products/category/${endpoint}`)
